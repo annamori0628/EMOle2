@@ -1,0 +1,513 @@
+@charset "utf-8";
+
+* {
+  font-family: "Noto Serif JP", serif;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+body {
+  background-color: #f7fcfe;
+}
+
+/* =====================ここからナビゲーションのためのCSS===========================*/
+
+#g-nav{
+  /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+  position:fixed;
+  z-index: 999;
+  /*ナビのスタート位置と形状*/
+top:0;
+  right: -120%;
+width:15%;
+  height: 100vh;/*ナビの高さ*/
+background: #b0c4de;
+  /*動き*/
+transition: all 0.5s;
+}
+
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive{
+  right: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999; 
+  width: 15%;
+  height: 100vh;/*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li{
+list-style: none;
+  text-align: center;
+}
+
+#g-nav li a{
+color: #282d33;
+text-decoration: none;
+padding:20px;
+display: block;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+font-weight: bold;
+
+}
+
+#g-nav li a:hover{
+color: #798799;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+position:fixed;
+  z-index: 9999;/*ボタンを最前面に*/
+top:10px;
+right: 10px;
+cursor: pointer;
+  width: 50px;
+  height:50px;
+}
+
+/*×に変化*/  
+.openbtn1 span{
+  display: inline-block;
+  transition: all .4s;
+  position: absolute;
+  left: 14px;
+  height: 0.5px;
+  border-radius: 2px;
+background-color: #282d33;
+  width: 45%;
+}
+
+.openbtn1 span:nth-of-type(1) {
+top:15px; 
+}
+
+.openbtn1 span:nth-of-type(2) {
+top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+
+.zentai{
+  animation-name:fadeInAnime;
+  animation-duration:4s;
+  animation-fill-mode:forwards;
+  opacity:0;
+  }
+  
+  @keyframes fadeInAnime{
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+.btn2{
+position: relative;
+width:100px;
+height:100px;
+box-sizing: border-box;
+padding: 0 10px;
+text-align: center;
+background:rgb(255, 182, 185);
+border-radius:50%;
+color: #fff;
+text-decoration: none;
+outline: none;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.top p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline;
+  transform: translate(-50%, -50%);
+  writing-mode: vertical-rl;
+  font-size: 25px;
+}
+
+.top p {
+  color: #000000;
+  background: -webkit-linear-gradient(-45deg, #ffffff, #000000);
+  background-size: 600% 600%;
+  background-position: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  posiion: relative;
+  writing-mode: vertical-rl;
+  display: inline-block;
+  margin: 0 auto 0 auto;
+  padding: 0;
+  text-align: left;
+  font-family: "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "游明朝体",
+    "Yu Mincho", YuMincho, serif;
+  font-size: 24px;
+  line-height: 1.8;
+  animation: fadein 4s;
+}
+
+@keyframes fadein {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+/* ===================ここまでファーストビューの文字の部分===================== */
+
+/*=============ここから矢印アニメーションのCSS ===================*/
+
+.btnarrow4 {
+  margin-top: 800px;
+  position: relative;
+  /*形状*/
+  display: inline-block;
+  padding: 0 20px;
+  color: #333;
+  text-decoration: none;
+  outline: none;
+}
+
+/*矢印と下線の形状*/
+.btnarrow4::before {
+  content: "";
+  /*絶対配置で下線の位置を決める*/
+  position: absolute;
+  bottom: -8px;
+  left: 15%;
+  /*下線の形状*/
+  width: 85%;
+  height: 1px;
+  background: #333;
+  /*アニメーションの指定*/
+  transition: all 0.3s;
+}
+
+.btnarrow4::after {
+  content: "";
+  /*絶対配置で矢印の位置を決める*/
+  position: absolute;
+  bottom: -3px;
+  right: 0;
+  /*矢印の形状*/
+  width: 15px;
+  height: 1px;
+  background: #333;
+  transform: rotate(35deg);
+  /*アニメーションの指定*/
+  transition: all 0.3s;
+}
+
+/*hoverした際の移動*/
+.btnarrow4:hover::before {
+  left: 20%;
+}
+
+.btnarrow4:hover::after {
+  right: -5%;
+}
+
+/*========= ここまで矢印アニメーションのCSS =============================*/
+
+/*========= ここからレイアウトのためのCSS ===============*/
+
+.zentai {
+  animation-name: fadeInAnime;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInAnime {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.top_yomu {
+  vertical-align: middle;
+  padding: 100px 0;
+  text-align: center;
+}
+
+p {
+  margin: 0 0 10px 0;
+}
+
+/*========= ここまでレイアウトのためのCSS=============================*/
+
+/* ===================ここから第〜章とその説明 ====================*/
+.daireisyou img {
+  object-fit: cover;
+  width: 200px;
+  height: 90px;
+  padding-bottom: 120px;
+}
+
+.setumei_1 {
+  margin-top: 400px;
+  font-size: 20px;
+  line-height: 2.5em;
+}
+
+#daiitisyou img {
+  object-fit: cover;
+  width: 200px;
+  height: 90px;
+  padding-bottom: 120px;
+}
+
+.setumei_2 {
+  margin-top: 400px;
+  font-size: 20px;
+  line-height: 2.5em;
+}
+
+#dainisyou img {
+  object-fit: cover;
+  width: 200px;
+  height: 90px;
+  padding-bottom: 120px;
+}
+.setumei_3 {
+  margin-top: 400px;
+  font-size: 20px;
+  line-height: 2.5em;
+}
+/* ===================ここまで第〜章とその説明 ====================*/
+
+/*========= ここからタイピングのCSS =============================*/
+
+.TextTyping span {
+  display: none;
+}
+
+/*文字列後ろの線の設定*/
+.TextTyping::after {
+  content: "|";
+  animation: typinganime 0.8s ease infinite;
+}
+
+@keyframes typinganime {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*========= ここまでタイピングのCSS=============================*/
+
+/*========= ここからボタンのCSS=============================*/
+.btns {
+  display: flex;
+  justify-content: space-between;
+  padding: 180px 180px 240px;
+}
+
+.btn {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  font-size: 50px;
+  text-align: center;
+  margin: 1em auto;
+  border-radius: 100%;
+  text-decoration: none;
+}
+
+.btn:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+  transition: 0.3s ease;
+}
+
+.btn:hover:after {
+  transform: translate(-50%, -50%) scale(1);
+  border-color: #fff;
+  border: 2px solid;
+}
+
+.yuuki {
+  background: rgba(250, 227, 217, 1);
+  border: 2px solid rgba(250, 227, 217, 1);
+}
+
+.ai {
+  background: rgba(255, 182, 185, 1);
+  border: 2px solid rgba(255, 182, 185, 1);
+}
+
+.sawayaka {
+  background-color: rgba(187, 222, 214, 1);
+  border: 2px solid rgba(187, 222, 214, 1);
+}
+
+.kanasii {
+  background-color: rgba(138, 198, 209, 1);
+  border: 2px solid rgba(138, 198, 209, 1);
+}
+
+/*========= ここまでボタンのCSS=============================*/
+
+/* =========================ここからタグのCSS =========================*/
+.tags {
+  writing-mode: vertical-rl;
+  padding-top: 200px;
+  margin: 0 auto;
+  line-height: 2;
+  text-align: justify;
+}
+
+.tag{
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.tag:hover {
+  transform: scale(1.2);
+}
+
+/* =========================ここまでタグのCSS =========================*/
+
+@media all and (max-width: 480px) {
+  body{
+    text-align: center;
+  }
+  .top p{
+    font-size: 18px;
+    padding-right: 20px;
+  }
+  .btnarrow4 {
+    font-size: 15px;
+    margin-top: 600px;
+  }
+
+  .daireisyou img{
+   width: 100px;
+   height: 45px;
+  }
+
+  .setumei_1{
+    font-size: 15px;
+    margin-top: 300px;
+  }
+
+  #daiitisyou img{
+    width: 100px;
+    height: 45px;
+    
+  }
+
+  .setumei_2{
+    font-size: 15px;
+    margin-top: 300px;
+  }
+ 
+  
+  .btn {
+    margin-top: 60px;
+    width: 60px;
+    height: 60px;
+    line-height: 20px;
+    font-size: 25px;
+    display: flex;
+  
+  }
+
+  .btns{
+    justify-content: space-between;
+    padding: 0;
+    margin: 40px;
+  }
+  #dainisyou img{
+    width: 100px;
+    height: 45px;
+    margin-top: 0;
+  }
+
+  .setumei_3{
+    font-size: 15px;
+  }
+  
+  .tags a{
+    font-size: 15px;
+  }
+
+}

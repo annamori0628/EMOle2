@@ -1,0 +1,650 @@
+@charset "utf-8";
+
+* {
+  font-family: "Noto Serif JP", serif;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+    background-color: #f7fcfe;
+}
+
+#g-nav{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+    /*ナビのスタート位置と形状*/
+  top:0;
+    right: -120%;
+  width:15%;
+    height: 100vh;/*ナビの高さ*/
+  background: #b0c4de;
+    /*動き*/
+  transition: all 0.5s;
+  }
+  
+  /*アクティブクラスがついたら位置を0に*/
+  #g-nav.panelactive{
+    right: 0;
+  }
+  
+  /*ナビゲーションの縦スクロール*/
+  #g-nav.panelactive #g-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 15%;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /*ナビゲーション*/
+  #g-nav ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  /*リストのレイアウト設定*/
+  
+  #g-nav li{
+  list-style: none;
+    text-align: center;
+  }
+  
+  #g-nav li a{
+  color: #282d33;
+  text-decoration: none;
+  padding:20px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+
+  }
+
+  #g-nav li a:hover{
+	color: #798799;
+  }
+
+  /*========= ボタンのためのCSS ===============*/
+  .openbtn1{
+  position:fixed;
+    z-index: 9999;/*ボタンを最前面に*/
+  top:10px;
+  right: 10px;
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+  }
+  
+  /*×に変化*/  
+  .openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 0.5px;
+    border-radius: 2px;
+  background-color: #282d33;
+    width: 45%;
+  }
+  
+  .openbtn1 span:nth-of-type(1) {
+  top:15px; 
+  }
+  
+  .openbtn1 span:nth-of-type(2) {
+  top:23px;
+  }
+  
+  .openbtn1 span:nth-of-type(3) {
+  top:31px;
+  }
+  
+  .openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+  }
+  
+  .openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+  }
+  
+  .openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+  }
+  
+  .zentai{
+    animation-name:fadeInAnime;
+    animation-duration:4s;
+    animation-fill-mode:forwards;
+    opacity:0;
+    }
+    
+    @keyframes fadeInAnime{
+      from {
+        opacity: 0;
+      }
+    
+      to {
+        opacity: 1;
+      }
+    }
+.btn2{
+  position: relative;
+  width:100px;
+  height:100px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  text-align: center;
+  background:rgb(255, 182, 185);
+  border-radius:50%;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn2:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  height: 85%;
+  border: 2px solid rgb(255, 182, 185);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+  transition: .3s ease; 
+}
+
+.btn2:hover:after {
+  transform: translate(-50%, -50%) scale(1);
+  border-color:#fff;
+}
+
+.btn2 {
+  display: block;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  text-align: center;
+  margin: 1em auto;
+  background: rgb(255, 182, 185);;
+  border-radius: 100%;
+  text-decoration: none;
+}
+
+h2{
+  text-align: center;
+  margin-top: 30px;
+}
+.tag {
+  font-size: 24px;
+  margin-top: 80px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.tag:hover {
+  transform: scale(1.2);
+}
+.video1 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video1 p {
+  font-size: 24px;
+}
+.video1t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video2 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video2 p {
+  font-size: 24px;
+}
+.video2t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video3 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video3 p {
+  font-size: 24px;
+}
+.video3t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video4 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video4 p {
+  font-size: 24px;
+}
+.video4t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+
+.video5 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video5 p {
+  font-size: 24px;
+}
+.video5t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video6 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video6 p {
+  font-size: 24px;
+}
+.video6t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video7 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video7 p {
+  font-size: 24px;
+}
+.video7t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video8 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video8 p {
+  font-size: 24px;
+}
+.video8t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+
+.video9 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video9 p {
+  font-size: 24px;
+}
+.video9t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video10 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video10 p {
+  font-size: 24px;
+}
+.video10t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video11 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video11 p {
+  font-size: 24px;
+}
+.video11t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+.video12 {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 150px;
+  align-items: center;
+}
+iframe {
+  padding-right: 50px;
+}
+.video12 p {
+  font-size: 24px;
+}
+.video12t {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+}
+
+@media all and (max-width: 480px) {
+  header {
+    height: 80px;
+    background: linear-gradient(0deg, #dde9ef, #fef4f4);
+    line-height: 80px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  /* この部分を追加しました！headerがid属性だったので、＃をつけてます！
+  パソコン表示で入れてたpaddingをスマホ表示では無しにしてるよ */
+  #header {
+    padding: 0;
+  }
+  header p {
+    font-size: 18px;
+    color: #333;
+    margin: 0px;
+    padding-bottom: 0;
+  }
+  iframe {
+    padding: 0;
+  }
+  .gnavi {
+    display: none;
+  }
+
+  .video1 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video1t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video2 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video2t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video3 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video3t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video4 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video4t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video5 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video5t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video6 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video6t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video7 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video7t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video8 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video8t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video9 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video9t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video10 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video10t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video11 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video11t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+  .video12 {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+
+  iframe {
+    padding-bottom: 20px;
+  }
+  .video12t {
+    font-size: 15px;
+    margin: 0;
+    text-align: center;
+  }
+}

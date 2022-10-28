@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+* {
+  font-family: "Noto Serif JP", serif;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+}
+
+body{
+    background-color: #f7fcfe;
+}
+
+#g-nav{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+    /*ナビのスタート位置と形状*/
+  top:0;
+    right: -120%;
+  width:15%;
+    height: 100vh;/*ナビの高さ*/
+  background: #b0c4de;
+    /*動き*/
+  transition: all 0.5s;
+  }
+  
+  /*アクティブクラスがついたら位置を0に*/
+  #g-nav.panelactive{
+    right: 0;
+  }
+  
+  /*ナビゲーションの縦スクロール*/
+  #g-nav.panelactive #g-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 15%;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /*ナビゲーション*/
+  #g-nav ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  /*リストのレイアウト設定*/
+  
+  #g-nav li{
+  list-style: none;
+    text-align: center;
+  }
+  
+  #g-nav li a{
+  color: #282d33;
+  text-decoration: none;
+  padding:20px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+
+  }
+
+  #g-nav li a:hover{
+	color: #798799;
+  }
+
+  /*========= ボタンのためのCSS ===============*/
+  .openbtn1{
+  position:fixed;
+    z-index: 9999;/*ボタンを最前面に*/
+  top:10px;
+  right: 10px;
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+  }
+  
+  /*×に変化*/  
+  .openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 0.5px;
+    border-radius: 2px;
+  background-color: #282d33;
+    width: 45%;
+  }
+  
+  .openbtn1 span:nth-of-type(1) {
+  top:15px; 
+  }
+  
+  .openbtn1 span:nth-of-type(2) {
+  top:23px;
+  }
+  
+  .openbtn1 span:nth-of-type(3) {
+  top:31px;
+  }
+  
+  .openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+  }
+  
+  .openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+  }
+  
+  .openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+  }
+  
+  .zentai{
+    animation-name:fadeInAnime;
+    animation-duration:4s;
+    animation-fill-mode:forwards;
+    opacity:0;
+    }
+    
+    @keyframes fadeInAnime{
+      from {
+        opacity: 0;
+      }
+    
+      to {
+        opacity: 1;
+      }
+    }
+.top h1{
+  margin-top: 120px;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.top h2{
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 120px;
+  line-height: 10;
+}
+
+.top p{
+  text-align: left;
+  margin-left: 120px;
+  font-size: 18px;
+}
